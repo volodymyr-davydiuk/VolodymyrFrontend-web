@@ -29,7 +29,7 @@ const TopMenuMobile = () => {
 		<List>
 			{wp?.menu?.menuItems?.nodes.map((item, index) => (
 				<ListItem key={`top-mobile-menu-${index}`} disablePadding>
-					<ListItemButton sx={{ textAlign: 'center' }} onClick={(e) => (navigate(item.uri))}>
+					<ListItemButton sx={{ textAlign: 'center' }} onClick={() => (navigate(item.uri))}>
 						<ListItemText primary={item.label} />
 					</ListItemButton>
 				</ListItem>

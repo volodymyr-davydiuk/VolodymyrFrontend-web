@@ -42,18 +42,18 @@ const Footer = () => {
 					}}
 					>
 						<Box sx={{ margin: '0 5px' }}>
-							<Link href="#" underline="none" color={"white"}>
-								<GitHubIcon fontSize={"medium"}/>
+							<Link href='https://github.com/volodymyr-davydiuk' target={'_blank'} underline='none' color={'white'}>
+								<GitHubIcon fontSize={'medium'}/>
 							</Link>
 						</Box>
 						<Box sx={{ margin: '0 5px' }}>
-							<Link href="#" underline="none" color={"white"}>
-								<LinkedInIcon fontSize={"medium"}/>
+							<Link href='https://www.linkedin.com/in/volodymyr-davydiuk-kiev/' target={'_blank'} underline='none' color={'white'}>
+								<LinkedInIcon fontSize={'medium'}/>
 							</Link>
 						</Box>
 						<Box sx={{ margin: '0 5px' }}>
-							<Link href="#" underline="none" color={"white"}>
-								<AlternateEmailIcon fontSize={"medium"}/>
+							<Link href='mailto:davydiukvolodymyr96@gmail.com' underline='none' color={'white'}>
+								<AlternateEmailIcon fontSize={'medium'}/>
 							</Link>
 						</Box>
 					</Box>
@@ -61,7 +61,7 @@ const Footer = () => {
 						marginBottom: {xs: '20px', sm: '0'}
 					}}>
 						<StaticImage
-							src={"../../assets/images/logo.png"}
+							src={'../../assets/images/logo.png'}
 							alt={process.env.SITE_NAME}
 							width={100}
 							quality={90}
@@ -72,7 +72,7 @@ const Footer = () => {
 						justifyContent: 'space-between',
 						marginBottom: {xs: '20px', sm: '0'}
 					}}>
-						<LocationOnIcon fontSize={"medium"}/>
+						<LocationOnIcon fontSize={'medium'}/>
 						<Typography>
 							Kyiv, Ukraine
 						</Typography>

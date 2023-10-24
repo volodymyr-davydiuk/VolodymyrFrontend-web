@@ -26,7 +26,7 @@ const TopMenu = () => {
   return (
     <div>
       {wp?.menu?.menuItems?.nodes.map((item) => (
-        <Button onClick={(e) => (navigate(item.uri))} key={item.id + Math.random() + 10 } sx={{ color: '#fff' }}>
+        <Button onClick={() => (navigate(item.uri))} key={item.id + Math.random() + 10 } sx={{ color: '#fff' }}>
           {item.label}
         </Button>
       ))}
