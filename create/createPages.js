@@ -44,20 +44,20 @@ module.exports = async ({ actions, graphql }) => {
   //   }
   // };
 
-  const addImageAutoAlt = (content, title) => {
-    if (typeof content === "string") {
-      const replace = (domNode) => {
-        if (domNode.name ===  "img") {
-          if (!domNode?.attribs?.alt || domNode.attribs.alt === "") {
-            domNode.attribs.alt = title;
-          }
-        }
-      };
-      return ReactDOMServer.renderToString(Parser(content, { replace }));
-    } else {
-      return content;
-    }
-  };
+  // const addImageAutoAlt = (content, title) => {
+  //   if (typeof content === "string") {
+  //     const replace = (domNode) => {
+  //       if (domNode.name ===  "img") {
+  //         if (!domNode?.attribs?.alt || domNode.attribs.alt === "") {
+  //           domNode.attribs.alt = title;
+  //         }
+  //       }
+  //     };
+  //     return ReactDOMServer.renderToString(Parser(content, { replace }));
+  //   } else {
+  //     return content;
+  //   }
+  // };
 
   await Promise.all(
     nodes.map(async (node, i) => {
