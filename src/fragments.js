@@ -11,6 +11,20 @@ export const fragments = graphql`
       metaDesc
       metaKeywords
     }
+    featuredImage {
+      node {
+        altText
+				sourceUrl
+				imageFile {
+					childImageSharp {
+						gatsbyImageData(layout: CONSTRAINED, quality: 90)
+					}
+				}
+      }
+    }
+    gatsby_home {
+			subtitle
+		}
   }
 
 `

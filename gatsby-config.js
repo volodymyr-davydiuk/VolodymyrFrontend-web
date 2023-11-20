@@ -1,3 +1,5 @@
+const { resolve } = require(`path`);
+
 require("dotenv").config({
   path: `.env`,
 });
@@ -15,6 +17,14 @@ module.exports = {
     siteUrl: process.env.SITE_URL,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: resolve(`${__dirname}/src/assets/images`),
+      },
+    },
     {
       resolve: "gatsby-source-graphql",
       options: {
@@ -24,18 +34,6 @@ module.exports = {
         fieldName: "wp",
         // Url to query from
         url: process.env.WPGRAPHQL_URL,
-
-        // refetch interval in seconds
-        refetchInterval: 60,
-      },
-    },
-
-    `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
       },
     },
     {

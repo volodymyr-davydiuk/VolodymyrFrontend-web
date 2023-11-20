@@ -86,6 +86,36 @@
 //   })
 // }
 
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+
+exports.createResolvers = ({
+                             actions,
+                             cache,
+                             createNodeId,
+                             createResolvers,
+                             store,
+                             reporter
+                           }) => {
+  const { createNode } = actions;
+  createResolvers({
+    WP_MediaItem: {
+      imageFile: {
+        type: `File`,
+        resolve(source) {
+          return createRemoteFileNode({
+            url: source.sourceUrl,
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter
+          });
+        }
+      }
+    }
+  });
+};
+
 const createPages = require(`./create/createPages`);
 
 exports.createPages = async (props) => {
@@ -102,5 +132,5 @@ exports.createPages = async (props) => {
   const perPage = wpSettings.wp.readingSettings.postsPerPage || 10
   // await createCategories(props, { perPage })
   // await createPosts(props);
-  await createPages(props);
+  await createPages(props, perPage);
 }

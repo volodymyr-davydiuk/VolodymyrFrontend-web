@@ -5,7 +5,7 @@ import Layout from "../../components/shared/layout";
 const Page = () => {
   return (
     <Layout>
-      <h1>It is a front page!</h1>
+      <h1>It is a page template!</h1>
     </Layout>
   );
 };
