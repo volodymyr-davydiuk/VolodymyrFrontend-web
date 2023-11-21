@@ -8,14 +8,15 @@ import Box from '@mui/material/Box';
 
 const StyleWrapper = styled('div')(({ theme }) => ({
   '.firs-screen': {
-    paddingTop: '80px',
+    padding: '110px 0 60px',
   },
   '.MuiTypography-h1': {
     fontWeight: '700',
+    color: '#FFE600',
   },
   [theme.breakpoints.down('sm')]: {
     '.firs-screen': {
-      paddingTop: '70px',
+      padding: '90px 0 40px',
     },
     '.MuiTypography-h1': {
       fontSize: '24px',
@@ -54,15 +55,37 @@ const ItemPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: 'inherit',
   boxShadow: 'none',
   backgroundImage: 'none',
+  textAlign: 'center',
   [theme.breakpoints.down('sm')]: {
     '&:nth-of-type(1)': {
-      marginTop: '10px',
-    }
+      marginTop: '15px',
+    },
+    textAlign: 'justify',
   }
 }));
 
 const ImageWrap = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#0A0E0E' : '#fff',
+  position: 'relative',
+  '.decorative-border': {
+    width: '90%',
+    height: '90%',
+    border: '2px solid #FFE600',
+    position: 'absolute',
+    top: '-20px',
+    left: '-20px',
+  },
+  [theme.breakpoints.down('lg')]: {
+    '.decorative-border': {
+      top: '-10px',
+      left: '-10px',
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    '.decorative-border': {
+      display: 'none',
+    },
+  }
 }));
 
 const IndexPage = ({ data }) => {
@@ -80,10 +103,11 @@ const IndexPage = ({ data }) => {
             <Grid container spasing={2}>
               <Grid xs={12} sm={3} md={4}>
                 <ImageWrap>
+                  <Box className={'decorative-border'} />
                   {featuredImage && (<FeaturedMedia image={featuredImage}/>)}
                 </ImageWrap>
               </Grid>
-              <Grid xs={12} sm={9} md={8} container direction="column" columnSpacing={{ sm: 2, md: 0 }}>
+              <Grid xs={12} sm={9} md={8} container direction="column">
                 <ItemPaper><Typography variant={'h1'} align={'center'} gutterBottom>{title}</Typography></ItemPaper>
                 <ItemPaper>
                   {subtitle && (
@@ -92,7 +116,7 @@ const IndexPage = ({ data }) => {
                 </ItemPaper>
                 <ItemPaper>
                   {content && (
-                    <Typography variant={'body1'} align={'center'} dangerouslySetInnerHTML={{ __html: content }} gutterBottom/>
+                    <Typography variant={'body1'} dangerouslySetInnerHTML={{ __html: content }} gutterBottom/>
                   )}
                 </ItemPaper>
               </Grid>
