@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
             }}
           >
             <main style={{
-              margin: '60px auto 25px',
+              margin: '0 auto 25px',
               height: '100%',
               minHeight: '70vh',
             }}

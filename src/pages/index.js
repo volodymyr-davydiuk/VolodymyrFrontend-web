@@ -2,16 +2,21 @@ import * as React from 'react';
 import Layout from '../components/shared/layout';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
-import { Container, styled, Typography } from '@mui/material';
-// import { StaticImage } from 'gatsby-plugin-image';
+import { Container, Grid, Paper, styled, Typography } from '@mui/material';
 import FeaturedMedia from '../components/shared/FeaturedMedia';
 import Box from '@mui/material/Box';
 
 const StyleWrapper = styled('div')(({ theme }) => ({
+  '.firs-screen': {
+    paddingTop: '80px',
+  },
   '.MuiTypography-h1': {
     fontWeight: '700',
   },
   [theme.breakpoints.down('sm')]: {
+    '.firs-screen': {
+      paddingTop: '70px',
+    },
     '.MuiTypography-h1': {
       fontSize: '24px',
     },
@@ -45,6 +50,21 @@ const StyleWrapper = styled('div')(({ theme }) => ({
   },
 }));
 
+const ItemPaper = styled(Paper)(({ theme }) => ({
+  backgroundColor: 'inherit',
+  boxShadow: 'none',
+  backgroundImage: 'none',
+  [theme.breakpoints.down('sm')]: {
+    '&:nth-of-type(1)': {
+      marginTop: '10px',
+    }
+  }
+}));
+
+const ImageWrap = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#0A0E0E' : '#fff',
+}));
+
 const IndexPage = ({ data }) => {
   const { home } = data;
   const { page } = home;
@@ -55,20 +75,28 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Seo title={seo.title ?? process.env.SITE_NAME} description={seo.metaDesc ?? process.env.SITE_DESCRIPTION} />
       <StyleWrapper>
-        <Box sx={{ background: 'radial-gradient(circle, rgba(10,14,14,1) 0%, rgba(29,40,40,1) 50%, rgba(10,14,14,1) 100%)', }}>
+        <Box className={'firs-screen'} sx={{ background: 'radial-gradient(circle, rgba(10,14,14,1) 0%, rgba(29,40,40,1) 50%, rgba(10,14,14,1) 100%)', }}>
           <Container maxWidth={'xl'}>
-            <Box>
-              {featuredImage && (<FeaturedMedia image={featuredImage}/>)}
-            </Box>
-            <Box>
-              <Typography variant={'h1'} align={'center'} gutterBottom>{title}</Typography>
-              {subtitle && (
-                <Typography variant={'h2'} align={'center'} gutterBottom>{subtitle}</Typography>
-              )}
-              {content && (
-                <Typography variant={'body1'} align={'center'} dangerouslySetInnerHTML={{ __html: content }} gutterBottom/>
-              )}
-            </Box>
+            <Grid container spasing={2}>
+              <Grid xs={12} sm={3} md={4}>
+                <ImageWrap>
+                  {featuredImage && (<FeaturedMedia image={featuredImage}/>)}
+                </ImageWrap>
+              </Grid>
+              <Grid xs={12} sm={9} md={8} container direction="column" columnSpacing={{ sm: 2, md: 0 }}>
+                <ItemPaper><Typography variant={'h1'} align={'center'} gutterBottom>{title}</Typography></ItemPaper>
+                <ItemPaper>
+                  {subtitle && (
+                    <Typography variant={'h2'} align={'center'} gutterBottom>{subtitle}</Typography>
+                  )}
+                </ItemPaper>
+                <ItemPaper>
+                  {content && (
+                    <Typography variant={'body1'} align={'center'} dangerouslySetInnerHTML={{ __html: content }} gutterBottom/>
+                  )}
+                </ItemPaper>
+              </Grid>
+            </Grid>
           </Container>
         </Box>
       </StyleWrapper>
